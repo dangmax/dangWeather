@@ -38,9 +38,8 @@ public class dangWeatherDB {
 	public void saveProvice(Province province){
 		if(province!=null){
 			ContentValues contentValues = new ContentValues();
-			contentValues.put("id", province.getId());
-			contentValues.put("provinceName", province.getProvinceName());
-			contentValues.put("provinceCode", province.getProvinceCode());
+			contentValues.put("province_name", province.getProvinceName());
+			contentValues.put("province_code", province.getProvinceCode());
 			sqLiteDatabase.insert("Province", null, contentValues);
 		}
 	}
@@ -50,8 +49,8 @@ public class dangWeatherDB {
 		Cursor cursor = sqLiteDatabase.query("Province", null, null, null, null, null, null);
 		while(cursor.moveToNext()){
 			Province province = new Province();
-			String Name = cursor.getString(cursor.getColumnIndex("provinceName"));
-			String Code = cursor.getString(cursor.getColumnIndex("provinceCode"));
+			String Name = cursor.getString(cursor.getColumnIndex("province_name"));
+			String Code = cursor.getString(cursor.getColumnIndex("province_code"));
 			int Id = cursor.getInt(cursor.getColumnIndex("id"));
 			province.setId(Id);
 			province.setProvinceName(Name);
