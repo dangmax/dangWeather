@@ -1,6 +1,7 @@
 package com.example.dangweather.activity;
 
 import com.example.dangweather.R;
+import com.example.dangweather.service.AutoUpdateService;
 import com.example.dangweather.util.HttpCallBackListener;
 import com.example.dangweather.util.HttpUtil;
 import com.example.dangweather.util.Utility;
@@ -190,6 +191,8 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		currentDate.setText(prefs.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityName.setVisibility(View.VISIBLE);
+		Intent intent = new Intent(this, AutoUpdateService.class);
+		startService(intent);
 	}
 }
 
